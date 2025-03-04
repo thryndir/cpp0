@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:26 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/01 17:27:29 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:49:52 by lgalloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ public:
 	std::string	GetPhoneNumber(void) const;
 	void		SetIndex(const int Index);
 	int			GetIndex(void) const;
-} t_Contact;
+	void		PrintData(const int ColsOrRows) const;
+};
 
 #endif

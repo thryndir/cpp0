@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:55:35 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/01 17:28:27 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:49:58 by lgalloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,21 @@ void	Contact::SetIndex(const int Index)
 int		Contact::GetIndex(void) const
 {
 	return (mIndex);
+}
+
+void	Contact::PrintData(const int ColsOrRows) const
+{
+	if (ColsOrRows == ROWS)
+	{
+		std::cout << mFirstName << '\n';
+		std::cout << mLastName << '\n';
+		std::cout << mNickName << '\n';
+		std::cout << mDarkestSecret << '\n';
+		std::cout << mPhoneNumber << '\n';
+		std::cout << mIndex << '\n';
+	}
+	else if (ColsOrRows == COL)
+	{
+		PrintSpace(mFirstName)
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:21 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/01 15:49:42 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:45:47 by lgalloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,22 @@
 
 #include "Contact.hpp"
 
-typedef class PhoneBook
+enum ColOrRows
 {
-	t_Contact 	Contact[8];
-	int			ContactNbr;
+	COL,
+	ROWS
+};
+
+class PhoneBook
+{
+	Contact 	mContact[8];
+	int			mContactNbr;
+public:
+	void	Add(void);
+	void	Search(const int Index);
+	void	SetContactNbr(const int Nbr);
 } t_PhoneBook;
+
+void	PrintSpace(const std::string Field);
 
 #endif
