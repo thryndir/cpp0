@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:18 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/04 18:51:04 by lgalloux         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:35:00 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,28 @@ void	PhoneBook::SetContactNbr(const int Nbr)
 	mContactNbr = Nbr;
 }
 
-void	PhoneBook::Search(const int Index)
+void	PhoneBook::Search(void)
 {
-	if (Index >= 0 && Index < 8)
-		mContact[Index].PrintData();
-	
+	int	Index = 0;
+	std::string	Input;
+
+	while (Index <= 3)
+	{
+		mContact[Index].PrintData(COLS);
+		std::cout << '\n';
+		Index++;
+	}
+	std::cout << "Please enter the index of the contact you want to display\n";
+	std::getline(std::cin >> std::ws, Input);
+	try
+	{
+		Index = StrToInt(Input);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	mContact[Index].PrintData(ROWS);
 }
 
 void    PhoneBook::Add(void)
@@ -33,16 +50,26 @@ void    PhoneBook::Add(void)
 	std::string	DarkestSecret;
 	std::string	PhoneNumber;
 
-	std::getline(std::cin >> std::ws, FirstName);
-	mContact->SetFirstName(FirstName);
-	std::getline(std::cin >> std::ws, LastName);
-	mContact->SetLastName(LastName);
-	std::getline(std::cin >> std::ws, NickName);
-	mContact->SetNickName(NickName);
-	std::getline(std::cin >> std::ws, DarkestSecret);
-	mContact->SetDarkestSecret(DarkestSecret);
-	std::getline(std::cin >> std::ws, PhoneNumber);
-	mContact->SetDarkestSecret(DarkestSecret);
-	mContact->SetIndex(mContactNbr);
+	std::cout << "Please type a FirstName\n";
+	VerifInput(FirstName);
+	mContact[mContactNbr % 8].SetFirstName(FirstName);
+
+	std::cout << "Please type a LastName\n";
+	VerifInput(LastName);
+	mContact[mContactNbr % 8].SetLastName(LastName);
+
+	std::cout << "Please type a NickName\n";
+	VerifInput(NickName);
+	mContact[mContactNbr % 8].SetNickName(NickName);
+
+	std::cout << "Please type a DarkestSecret\n";
+	VerifInput(DarkestSecret);
+	mContact[mContactNbr % 8].SetDarkestSecret(DarkestSecret);
+
+	std::cout << "Please type a PhoneNumber\n";
+	VerifInput(PhoneNumber);
+	mContact[mContactNbr % 8].SetIndex(mContactNbr % 8);
+	
+	std::cout << "Contact :" << mContactNbr % 8 << " has been created\n";
 	mContactNbr++;
 }

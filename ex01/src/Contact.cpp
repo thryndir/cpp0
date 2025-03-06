@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:55:35 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:58 by lgalloux         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:46:40 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int		Contact::GetIndex(void) const
 
 void	Contact::PrintData(const int ColsOrRows) const
 {
+	std::string ToPrint;
+
 	if (ColsOrRows == ROWS)
 	{
 		std::cout << mFirstName << '\n';
@@ -83,8 +85,12 @@ void	Contact::PrintData(const int ColsOrRows) const
 		std::cout << mPhoneNumber << '\n';
 		std::cout << mIndex << '\n';
 	}
-	else if (ColsOrRows == COL)
+	else if (ColsOrRows == COLS)
 	{
-		PrintSpace(mFirstName)
+		std::cout << std::setw(10) << std::right << '|' << mIndex << '|';
+		FormatString(mFirstName);
+		FormatString(mLastName);
+		FormatString(mNickName);
+		std::cout << '\n';
 	}
 }

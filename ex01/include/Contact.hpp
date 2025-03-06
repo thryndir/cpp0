@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:26 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:52 by lgalloux         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:25:12 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define CONTACT_HPP
 
 #include <iostream>
+#include <iomanip>
+#include <climits>
+#include <stdexcept>
+#include <sstream>
+#include <cstdio>
 
 class Contact
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:21 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/04 17:45:47 by lgalloux         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:28:43 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 enum ColOrRows
 {
-	COL,
+	COLS,
 	ROWS
 };
 
@@ -27,10 +27,12 @@ class PhoneBook
 	int			mContactNbr;
 public:
 	void	Add(void);
-	void	Search(const int Index);
+	void	Search(void);
 	void	SetContactNbr(const int Nbr);
-} t_PhoneBook;
+};
 
-void	PrintSpace(const std::string Field);
+void	FormatString(const std::string& Src);
+void	VerifInput(std::string& ToVerif);
+int		StrToInt(const std::string& Str);
 
 #endif
