@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:18 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/06 19:35:00 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:40:31 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	PhoneBook::Search(void)
 	int	Index = 0;
 	std::string	Input;
 
-	while (Index <= 3)
+	while (Index <= 7)
 	{
 		mContact[Index].PrintData(COLS);
 		std::cout << '\n';

@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:55:35 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/05 13:46:40 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:45:25 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	Contact::PrintData(const int ColsOrRows) const
 	}
 	else if (ColsOrRows == COLS)
 	{
-		std::cout << std::setw(10) << std::right << '|' << mIndex << '|';
+		std::cout << '|';
+		std::cout << std::setw(10) << std::right << mIndex << '|';
 		FormatString(mFirstName);
 		FormatString(mLastName);
 		FormatString(mNickName);
