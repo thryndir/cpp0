@@ -18,7 +18,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(addprefix $(OBJ_DIR)/,$(OBJS)) -o $@
 
 debug: CXXFLAGS += -g
-debug: $(NAME)
+debug: re
 
 clean:
 	rm -rf $(OBJ_DIR)

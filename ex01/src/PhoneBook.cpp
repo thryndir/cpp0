@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:18 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/06 19:40:31 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:55:15 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,26 @@ void	PhoneBook::SetContactNbr(const int Nbr)
 	mContactNbr = Nbr;
 }
 
-void	PhoneBook::Search(void)
+int	PhoneBook::Search(void)
 {
-	int	Index = 0;
-	std::string	Input;
-
+	int	Index (0);
+	
 	while (Index <= 7)
 	{
 		mContact[Index].PrintData(COLS);
 		std::cout << '\n';
 		Index++;
 	}
+	int	Result (0);
 	std::cout << "Please enter the index of the contact you want to display\n";
-	std::getline(std::cin >> std::ws, Input);
-	try
-	{
-		Index = StrToInt(Input);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	mContact[Index].PrintData(ROWS);
+	Result = VerifNumber(true);
+	if (Result == EOF)
+		return (EOF);
+	mContact[Result].PrintData(ROWS);
+	return (EXIT_SUCCESS);
 }
 
-void    PhoneBook::Add(void)
+int   PhoneBook::Add(void)
 {
 	std::string	FirstName;
 	std::string	LastName;
@@ -51,25 +46,31 @@ void    PhoneBook::Add(void)
 	std::string	PhoneNumber;
 
 	std::cout << "Please type a FirstName\n";
-	VerifInput(FirstName);
+	if (VerifEmpty(FirstName) == EOF)
+		return (EOF);
 	mContact[mContactNbr % 8].SetFirstName(FirstName);
 
 	std::cout << "Please type a LastName\n";
-	VerifInput(LastName);
+	if (VerifEmpty(LastName) == EOF)
+		return (EOF);
 	mContact[mContactNbr % 8].SetLastName(LastName);
 
 	std::cout << "Please type a NickName\n";
-	VerifInput(NickName);
+	if (VerifEmpty(NickName) == EOF)
+		return (EOF);
 	mContact[mContactNbr % 8].SetNickName(NickName);
 
 	std::cout << "Please type a DarkestSecret\n";
-	VerifInput(DarkestSecret);
+	if (VerifEmpty(DarkestSecret) == EOF)
+		return (EOF);
 	mContact[mContactNbr % 8].SetDarkestSecret(DarkestSecret);
 
 	std::cout << "Please type a PhoneNumber\n";
-	VerifInput(PhoneNumber);
-	mContact[mContactNbr % 8].SetIndex(mContactNbr % 8);
+	if (VerifNumber(false) == EOF)
+		return (EOF);
+	mContact[mContactNbr % 8].SetPhoneNumber(PhoneNumber);
 	
 	std::cout << "Contact :" << mContactNbr % 8 << " has been created\n";
 	mContactNbr++;
+	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:21 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/06 16:28:43 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:03:53 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,21 @@ class PhoneBook
 	Contact 	mContact[8];
 	int			mContactNbr;
 public:
-	void	Add(void);
-	void	Search(void);
+	PhoneBook()
+		: mContactNbr (0)
+	{
+		for (int i (0); i <= 7; i++)
+			mContact[i] = Contact(i);
+	}
+	int		Add(void);
+	int		Search(void);
 	void	SetContactNbr(const int Nbr);
 };
 
 void	FormatString(const std::string& Src);
-void	VerifInput(std::string& ToVerif);
+int		VerifEmpty(std::string& ToVerif);
+int		VerifNumber(bool CheckRange);
 int		StrToInt(const std::string& Str);
+int 	CheckRange(int CheckIndex);
 
 #endif

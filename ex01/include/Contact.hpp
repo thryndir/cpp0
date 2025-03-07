@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:26 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/06 19:25:12 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:28:59 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <cstdio>
+#include <cstdlib>
 
 class Contact
 {
@@ -29,6 +30,14 @@ class Contact
 	std::string	mPhoneNumber;
 	int			mIndex;
 public:
+	Contact(int Index = 0)
+		: mFirstName()
+		, mLastName()
+		, mNickName()
+		, mDarkestSecret()
+		, mPhoneNumber()
+		, mIndex(Index)
+		{}
 	void		SetFirstName(const std::string& FirstName);
 	std::string	GetFirstName(void) const;
 	void		SetLastName(const std::string& LastName);
