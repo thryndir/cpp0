@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:17:26 by lgalloux          #+#    #+#             */
-/*   Updated: 2025/03/07 20:22:17 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:55:46 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,24 @@ int	StrToInt(const std::string& Str)
 	char				temp;
 
 	if (!(Sstream >> result))
-		throw std::runtime_error("Please enter a valid int");
+		throw std::invalid_argument("Please enter a valid int");
 	while (Sstream.peek() != EOF && std::isspace(Sstream.peek()))
 		Sstream.get(temp);
 	if (Sstream.peek() != EOF)
-		throw std::runtime_error("Please enter a valid int");
+		throw std::invalid_argument("Please enter a valid int");
 	return (result);
 }
 
-int CheckRange(int Index)
+void CheckRange(int Index)
 {
-	if (Index >= 0 && Index <= 7)
-			return (EXIT_SUCCESS);
-	else
-		std::cerr << "Please enter a value between 0 and 7\n";
-	return (EXIT_FAILURE);
+	if (Index < 0 || Index > 7)
+		throw std::runtime_error("Please enter a value between 0 and 7");
 }
 
 int	VerifNumber(bool	CheckIndex)
 {
 	std::string Input;
-	int			Index (0);
+	int			Number (0);
 
 	do
 	{
@@ -48,18 +45,21 @@ int	VerifNumber(bool	CheckIndex)
 			return (EOF);
 		try
 		{
-			Index = StrToInt(Input);
-			if (CheckIndex == true)
-				return (CheckRange(Index));
-			else
-				return (EXIT_SUCCESS);
+			Number = StrToInt(Input);
+			if (CheckIndex)
+				CheckRange(Number);
+			return (Number);
 		}
-		catch(const std::exception& e)
+		catch (const std::runtime_error& Error)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << Error.what() << '\n';
+		}
+		catch (const std::invalid_argument& Arg)
+		{
+			std::cerr << Arg.what() << '\n';
 			std::cin.clear();
 			char c;
-            while (std::cin.peek() != EOF && std::isspace(std::cin.peek()))
+			while (std::cin.peek() != EOF && std::isspace(std::cin.peek()))
 				std::cin.get(c);
 		}
 	} while (true);

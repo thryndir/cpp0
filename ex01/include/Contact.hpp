@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:26 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/07 19:28:59 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:00:03 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <cstdio>
+#include <cctype>
 #include <cstdlib>
 
 class Contact

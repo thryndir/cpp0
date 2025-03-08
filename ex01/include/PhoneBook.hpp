@@ -6,7 +6,7 @@
 /*   By: thryndir <thryndir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:41:21 by thryndir          #+#    #+#             */
-/*   Updated: 2025/03/07 19:03:53 by thryndir         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:43:00 by thryndir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void	FormatString(const std::string& Src);
 int		VerifEmpty(std::string& ToVerif);
 int		VerifNumber(bool CheckRange);
 int		StrToInt(const std::string& Str);
-int 	CheckRange(int CheckIndex);
+void 	CheckRange(int CheckIndex);
 
 #endif
