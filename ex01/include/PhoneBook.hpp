@@ -38,7 +38,7 @@ public:
 };
 
 void	FormatString(const std::string& Src);
-int		VerifEmpty(std::string& ToVerif);
+int		VerifEmpty(std::string& OutToVerif);
 int		VerifNumber(bool CheckRange);
 int		StrToInt(const std::string& Str);
 void 	CheckRange(int CheckIndex);

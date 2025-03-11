@@ -80,19 +80,19 @@ void	FormatString(const std::string& Src)
 	}
 }
 
-int	VerifEmpty(std::string& ToVerif)
+int	VerifEmpty(std::string& OutToVerif)
 {
 	do
 	{
-		std::getline(std::cin, ToVerif);
+		std::getline(std::cin, OutToVerif);
 		if (std::cin.eof())
 			return (EOF);
-		std::stringstream Sstream (ToVerif);
-		ToVerif.clear();
-		Sstream >> std::ws >> ToVerif;
-		if (ToVerif.empty())
+		std::stringstream Sstream (OutToVerif);
+		OutToVerif.clear();
+		Sstream >> std::ws >> OutToVerif;
+		if (OutToVerif.empty())
 			std::cerr << "Input cannot be empty. Please enter a valid input: ";
-	} while (ToVerif.empty());
+	} while (OutToVerif.empty());
 	return (EXIT_SUCCESS);
 }
 
