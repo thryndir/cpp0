@@ -26,20 +26,16 @@ class PhoneBook
 	Contact 	mContact[8];
 	int			mContactNbr;
 public:
-	PhoneBook()
-		: mContactNbr (0)
-	{
-		for (int i (0); i <= 7; i++)
-			mContact[i] = Contact(i);
-	}
+	PhoneBook();
 	int		Add(void);
 	int		Search(void);
 	void	SetContactNbr(const int Nbr);
+	void	GetContactNbr(void) const;
 };
 
 void	FormatString(const std::string& Src);
 int		VerifEmpty(std::string& OutToVerif);
-int		VerifNumber(bool CheckRange);
+int		VerifNumber(bool CheckRange, int ContactNbr);
 int		StrToInt(const std::string& Str);
 void 	CheckRange(int CheckIndex);
 

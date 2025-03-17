@@ -91,6 +91,5 @@ void	Contact::PrintData(const int ColsOrRows) const
 		FormatString(mFirstName);
 		FormatString(mLastName);
 		FormatString(mNickName);
-		std::cout << '\n';
 	}
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <cstdio>
 
 int	StrToInt(const std::string& Str)
 {
@@ -27,13 +28,15 @@ int	StrToInt(const std::string& Str)
 	return (result);
 }
 
-void CheckRange(int Index)
+void CheckRange(int Index, int ContactNumber)
 {
-	if (Index < 0 || Index > 7)
+	if ((Index < 0 || Index > 7))
 		throw std::runtime_error("Please enter a value between 0 and 7");
+	if (Index >= ContactNumber)
+		throw std::runtime_error("Please enter the index of an existing contact");
 }
 
-int	VerifNumber(bool	CheckIndex)
+int	VerifNumber(bool	CheckIndex, int ContactNumber)
 {
 	std::string Input;
 	int			Number (0);
@@ -47,7 +50,7 @@ int	VerifNumber(bool	CheckIndex)
 		{
 			Number = StrToInt(Input);
 			if (CheckIndex)
-				CheckRange(Number);
+				CheckRange(Number, ContactNumber);
 			return (Number);
 		}
 		catch (const std::runtime_error& Error)
@@ -87,11 +90,12 @@ int	VerifEmpty(std::string& OutToVerif)
 		std::getline(std::cin, OutToVerif);
 		if (std::cin.eof())
 			return (EOF);
-		std::stringstream Sstream (OutToVerif);
-		OutToVerif.clear();
-		Sstream >> std::ws >> OutToVerif;
-		if (OutToVerif.empty())
+		std::string::size_type pos = OutToVerif.find_first_not_of(" \n\t\v\r\f");
+		if (pos == OutToVerif.npos)
+		{	
 			std::cerr << "Input cannot be empty. Please enter a valid input: ";
+			OutToVerif.clear();
+		}
 	} while (OutToVerif.empty());
 	return (EXIT_SUCCESS);
 }
@@ -103,6 +107,7 @@ int	main(void)
 	
 	while (Input != "EXIT")
 	{
+		std::cout << "Please enter your command [ADD, SEARCH, EXIT]\n";
 		std::getline(std::cin >> std::ws, Input);
 		if (std::cin.eof())
 			return (EXIT_SUCCESS);

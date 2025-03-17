@@ -11,7 +11,14 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <cstdlib>
 #include <iostream>
+
+PhoneBook::PhoneBook() : mContactNbr(0)
+{
+	for (int i (0); i <= 7; i++)
+		mContact[i] = Contact(i);
+}
 
 void	PhoneBook::SetContactNbr(const int Nbr)
 {
@@ -28,12 +35,16 @@ int	PhoneBook::Search(void)
 		std::cout << '\n';
 		Index++;
 	}
+	std::cout << '\n';
 	int	Result (0);
+	if (mContactNbr == 0)
+		return (EXIT_SUCCESS);
 	std::cout << "Please enter the index of the contact you want to display\n";
-	Result = VerifNumber(true);
+	Result = VerifNumber(true, mContactNbr);
 	if (Result == EOF)
 		return (EOF);
 	mContact[Result].PrintData(ROWS);
+	std::cout << '\n';
 	return (EXIT_SUCCESS);
 }
 
@@ -66,11 +77,12 @@ int   PhoneBook::Add(void)
 	mContact[mContactNbr % 8].SetDarkestSecret(DarkestSecret);
 
 	std::cout << "Please type a PhoneNumber\n";
-	if (VerifNumber(false) == EOF)
+	if (VerifEmpty(PhoneNumber) == EOF)
 		return (EOF);
 	mContact[mContactNbr % 8].SetPhoneNumber(PhoneNumber);
 	
 	std::cout << "Contact :" << mContactNbr % 8 << " has been created\n";
+	std::cout << '\n';
 	mContactNbr++;
 	return (EXIT_SUCCESS);
 }
