@@ -9,15 +9,11 @@
 /*   Updated: 2025/02/04 17:45:33 by lgalloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <ctype.h>
 #include <iostream>
 
 int main(int argc, char **argv)
 {
-	int	toPrint(0);
-
-	if (argc <= 1)
+	if (argc == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
 		return (0);
@@ -26,9 +22,11 @@ int main(int argc, char **argv)
 	{
 		for (int j(0); argv[i][j]; j++)
 		{
-			toPrint = toupper((int)argv[i][j]);
+		char	toPrint = std::toupper(argv[i][j]);
 			std::cout << (char)toPrint;
 		}
+		if (i + 1 != argc)
+			std::cout << ' ';
 	}
 	return (0);
 }
